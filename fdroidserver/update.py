@@ -802,6 +802,12 @@ def make_index(apps, sortedids, apks, repodir, archive, categories):
         if app['FlattrID']:
             addElement('flattr', app['FlattrID'], doc, apel)
 
+        # ADD Teacher/Student Only metadata
+        if app['Teacher Only']:
+            addElement('teacheronly', app['Teacher Only'], doc, apel)
+        if app['Student Only']:
+            addElement('studentonly', app['Student Only'], doc, apel)
+
         # These elements actually refer to the current version (i.e. which
         # one is recommended. They are historically mis-named, and need
         # changing, but stay like this for now to support existing clients.
@@ -1086,6 +1092,8 @@ def main():
                 f.write("Web Site:\n")
                 f.write("Source Code:\n")
                 f.write("Issue Tracker:\n")
+                f.write("Teacher Only:No\n")    # ADD Teacher/Student Only metadata
+                f.write("Student Only:No\n")
                 f.write("Summary:" + apk['name'] + "\n")
                 f.write("Description:\n")
                 f.write(apk['name'] + "\n")

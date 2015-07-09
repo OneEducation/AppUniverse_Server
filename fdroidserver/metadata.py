@@ -48,6 +48,8 @@ app_defaults = OrderedDict([
     ('Web Site', ''),
     ('Source Code', ''),
     ('Issue Tracker', ''),
+    ('Teacher Only', 'No'),        # ADD Teacher/Student Only metadata
+    ('Student Only', 'No'),
     ('Donate', None),
     ('FlattrID', None),
     ('Bitcoin', None),
@@ -188,7 +190,7 @@ valuetypes = {
 
     FieldValidator("Boolean",
                    ['Yes', 'No'], None,
-                   ["Requires Root"],
+                   ["Requires Root", "Teacher Only", "Student Only"],   # ADD Teacher/Student Only metadata
                    []),
 
     FieldValidator("bool",
@@ -826,6 +828,8 @@ def write_metadata(dest, app):
     writefield('Web Site')
     writefield('Source Code')
     writefield('Issue Tracker')
+    writefield('Teacher Only')      # ADD Teacher/Student Only metadata
+    writefield('Student Only')
     writefield_nonempty('Donate')
     writefield_nonempty('FlattrID')
     writefield_nonempty('Bitcoin')
