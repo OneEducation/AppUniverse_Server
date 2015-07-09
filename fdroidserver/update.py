@@ -808,6 +808,10 @@ def make_index(apps, sortedids, apks, repodir, archive, categories):
         if app['Student Only']:
             addElement('studentonly', app['Student Only'], doc, apel)
 
+        # ADD Auto Update metadata
+        if app['Auto Update']:
+            addElement('autoupdate', app['Auto Update'], doc, apel)
+
         # These elements actually refer to the current version (i.e. which
         # one is recommended. They are historically mis-named, and need
         # changing, but stay like this for now to support existing clients.
@@ -1094,6 +1098,7 @@ def main():
                 f.write("Issue Tracker:\n")
                 f.write("Teacher Only:No\n")    # ADD Teacher/Student Only metadata
                 f.write("Student Only:No\n")
+                f.write("Auto Update:No\n")     # ADD Auto Update metadata
                 f.write("Summary:" + apk['name'] + "\n")
                 f.write("Description:\n")
                 f.write(apk['name'] + "\n")
